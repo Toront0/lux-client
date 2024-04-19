@@ -37,13 +37,7 @@ const insertVideoCommentReplyLike = async (commentId: number) => {
   return data;
 };
 
-export const likeVideoComment = (
-  commentId: number,
-  replyToCommentId: number,
-  isReply: boolean
-) => {
-  console.log("$", [reactQueryKeys.videoCommentReplies, replyToCommentId]);
-
+export const likeVideoComment = (commentId: number, isReply: boolean) => {
   const query: UseMutationOptions = {
     mutationFn: () =>
       isReply
