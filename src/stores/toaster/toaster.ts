@@ -9,7 +9,7 @@ export const useToaster = create<IUseToaster>((set, get) => ({
     const toast = {
       id: self.crypto.randomUUID(),
       ...v,
-      ref: createRef()
+      ref: createRef<HTMLElement>()
     };
     set({ toasts: get().toasts.concat(toast) });
   },

@@ -13,7 +13,7 @@ export type ToastType = {
   subtitle?: string;
   img?: string;
   type: "message";
-  ref: RefObject<HTMLElement>;
+  ref: RefObject<HTMLElement | undefined>;
 };
 
 export interface IUseToaster {
