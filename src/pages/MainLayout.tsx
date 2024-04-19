@@ -4,10 +4,14 @@ import Sidebar from "@/widgets/Sidebar/ui";
 
 import { Navigate } from "react-router-dom";
 
+import { useCookies } from "react-cookie";
+
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const val = useAuthSession();
 
-  console.log("val", val);
+  const cookie = useCookies(["jwt"]);
+
+  console.log("cookie", cookie);
 
   if (!val) {
     return <Navigate to="/auth" />;

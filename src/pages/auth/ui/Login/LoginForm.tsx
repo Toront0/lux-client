@@ -16,10 +16,10 @@ const LoginForm = () => {
   const { values, errors, handleChange } = useForm<ILoginForm>();
 
   const { mutate, isPending, error } = useMutation<AxiosResponse, AxiosError>({
-    mutationFn: () => onLogin(values.email, values.password)
-    // onSuccess: () => {
-    //   window.location.replace("/");
-    // }
+    mutationFn: () => onLogin(values.email, values.password),
+    onSuccess: () => {
+      window.location.replace("/");
+    }
   });
 
   const handleSubmit = (e: SyntheticEvent) => {
