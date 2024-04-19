@@ -6,6 +6,8 @@ import { Navigate } from "react-router-dom";
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const val = useAuthSession();
 
+  console.log("val", val);
+
   if (!val) {
     return <Navigate to="/auth" />;
   }

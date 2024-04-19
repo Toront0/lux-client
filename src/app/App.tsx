@@ -12,8 +12,6 @@ const App = () => {
   const websocketConn = useWebsocket();
   const wsRef = useRef<WebSocket>();
 
-  console.log("---", import.meta.env.VITE_BACKEND_ORIGIN);
-
   useEffect(() => {
     if (!wsRef.current) {
       const ws = new WebSocket(
