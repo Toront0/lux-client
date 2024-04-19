@@ -30,11 +30,7 @@ const deletePostCommentReplyLike = async (commentId: number) => {
   return data;
 };
 
-export const deletelLikePostComment = (
-  commentId: number,
-  replyToCommentId: number,
-  isReply: boolean
-) => {
+export const deletelLikePostComment = (commentId: number, isReply: boolean) => {
   const query: UseMutationOptions = {
     mutationFn: () =>
       isReply

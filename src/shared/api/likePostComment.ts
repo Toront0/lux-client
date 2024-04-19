@@ -4,7 +4,6 @@ import { UseMutationOptions } from "@tanstack/react-query";
 
 export type OnLikeComment = (
   commentId: number,
-  replyToCommentId: number,
   isReply: boolean
 ) => UseMutationOptions<unknown, Error, void, unknown>;
 
@@ -36,11 +35,7 @@ const insertPostCommentReplyLike = async (commentId: number) => {
   return data;
 };
 
-export const likePostComment = (
-  commentId: number,
-  replyToCommentId: number,
-  isReply: boolean
-) => {
+export const likePostComment = (commentId: number, isReply: boolean) => {
   const query: UseMutationOptions = {
     mutationFn: () =>
       isReply
