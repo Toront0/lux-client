@@ -14,11 +14,7 @@ interface IDeleteLikeComment {
 
 const DeleteLikeComment = (props: IDeleteLikeComment) => {
   const { mutate: deleteLikeComment, isPending: isDeletingLike } = useMutation(
-    props.onDeleteLikeComment(
-      props.id,
-      props.commentBelongsToId || 0,
-      props.repliesAmount >= 0 ? false : true
-    )
+    props.onDeleteLikeComment(props.id, props.repliesAmount >= 0 ? false : true)
   );
 
   return (

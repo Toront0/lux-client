@@ -13,11 +13,7 @@ interface ILikeComment {
 
 const LikeComment = (props: ILikeComment) => {
   const { mutate: likeComment, isPending: isLiking } = useMutation(
-    props.onLikeComment(
-      props.id,
-      props.commentBelongsToId || 0,
-      props.repliesAmount >= 0 ? false : true
-    )
+    props.onLikeComment(props.id, props.repliesAmount >= 0 ? false : true)
   );
 
   return (
