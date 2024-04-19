@@ -2,7 +2,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { LoaderFunctionArgs } from "react-router-dom";
 
 import { axiosInstance, reactQueryKeys } from "@/shared";
-import { UserType } from "../config/types";
+import { UserType } from "../lib/types";
 
 export const getUserDetail = async (userId: string): Promise<UserType> => {
   const { data } = await axiosInstance({

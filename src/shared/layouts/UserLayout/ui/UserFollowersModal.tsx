@@ -3,19 +3,18 @@ import {
   ModalContent,
   SearchInput,
   SpinnerLoader,
-  reactQueryKeys,
-  useIntersection
+  reactQueryKeys
 } from "@/shared";
 import { CSSTransition } from "react-transition-group";
 
 import { IoMdClose } from "react-icons/io";
 import { UserPreview } from "@/entities";
-import { useEffect, useRef, useState } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { getUserFollowers } from "../api/getUserFollowers";
 import { useDebouncedValue } from "@/shared/hooks/useDebouncedValue";
 
 import { TbUserSearch } from "react-icons/tb";
+import { useInfiniteQueryScroll } from "@/shared/hooks";
 
 interface IUserFollowersModal {
   onClose: () => void;
@@ -32,35 +31,14 @@ const UserFollowersModal = ({
   userLName,
   userId
 }: IUserFollowersModal) => {
-  const containerRef = useRef<HTMLElement>();
+  // const containerRef = useRef<HTMLElement>();
   const [inputValue, setInputValue] = useState("");
   const [debounced] = useDebouncedValue(inputValue, 400);
 
-  const { ref, entry } = useIntersection({
-    root: containerRef.current,
-    threshold: 1
-  });
-
-  const { data, isLoading, fetchNextPage } = useInfiniteQuery({
-    queryKey: [reactQueryKeys.userFollowers, userId, debounced],
-    queryFn: ({ pageParam }) => getUserFollowers(pageParam, userId, debounced),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.length === 0) {
-        return undefined;
-      }
-
-      return allPages.length;
-    }
-  });
-
-  useEffect(() => {
-    if (entry?.isIntersecting) {
-      fetchNextPage();
-    }
-  }, [entry]);
-
-  const content = data?.pages.flatMap((v) => v);
+  const { ref, query, flattedContent } = useInfiniteQueryScroll(
+    (pageParam) => getUserFollowers(pageParam, userId, debounced),
+    [reactQueryKeys.userFollowers, userId, debounced]
+  );
 
   return (
     <CSSTransition
@@ -91,18 +69,18 @@ const UserFollowersModal = ({
           onChange={(e) => setInputValue(e.target.value)}
         />
         <div className="mt-2">
-          {!isLoading && content?.length === 0 && (
+          {!query.isLoading && flattedContent?.length === 0 && (
             <div className="h-full text-gray-6 text-sm my-6 dark:text-gray-9 flex-col flex items-center justify-center">
               <TbUserSearch className="text-2xl" />
               <span>No results were found</span>
             </div>
           )}
-          {isLoading && (
+          {query.isLoading && (
             <div className="flex justify-center my-4">
               <SpinnerLoader />
             </div>
           )}
-          {content?.map((v, i, arr) => {
+          {flattedContent?.map((v, i, arr) => {
             if (i === arr.length - 1) {
               return (
                 <UserPreview

@@ -1,4 +1,4 @@
-import { UsersRelations } from "../config/types";
+import { UsersRelations } from "./types";
 
 export const getUsersCurrentStatus = (r: UsersRelations) => {
   switch (r) {

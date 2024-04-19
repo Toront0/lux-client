@@ -39,32 +39,6 @@ const UserFollowingsModal = ({
     [reactQueryKeys.userFollowing, userId, debounced]
   );
 
-  // const { ref, entry } = useIntersection({
-  //   root: containerRef.current,
-  //   threshold: 1
-  // });
-
-  // const { data, status, isLoading, fetchNextPage } = useInfiniteQuery({
-  //   queryKey: [reactQueryKeys.userFollowing, userId, debounced],
-  //   queryFn: ({ pageParam }) => getUserFollowings(pageParam, userId, debounced),
-  //   initialPageParam: 0,
-  //   getNextPageParam: (lastPage, allPages) => {
-  //     if (lastPage.length === 0) {
-  //       return undefined;
-  //     }
-
-  //     return allPages.length;
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   if (entry?.isIntersecting) {
-  //     fetchNextPage();
-  //   }
-  // }, [entry]);
-
-  // const content = data?.pages.flatMap((v) => v);
-
   return (
     <CSSTransition
       timeout={200}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import UserFollowersModal from "./UserFollowersModal";
 
 interface IUserDetailFollowers {
