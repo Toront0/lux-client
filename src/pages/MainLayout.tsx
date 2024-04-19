@@ -1,6 +1,7 @@
 import { useAuthSession } from "@/shared/hooks";
 import { Header } from "@/widgets";
 import Sidebar from "@/widgets/Sidebar/ui";
+import { GiValve } from "react-icons/gi";
 import { Navigate } from "react-router-dom";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
