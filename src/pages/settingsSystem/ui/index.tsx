@@ -8,9 +8,7 @@ const SettingsSystem = () => {
   return (
     <div className="h-screen">
       <Select>
-        <SelectTrigger defaultValue="Выберите язык">
-          Выберите язык
-        </SelectTrigger>
+        <SelectTrigger>Выберите язык</SelectTrigger>
         <SelectContent>
           <SelectOption idx={0} onClick={() => i18n.changeLanguage("en")}>
             English

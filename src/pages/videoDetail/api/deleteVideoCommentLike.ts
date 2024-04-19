@@ -33,7 +33,6 @@ const deleteVideoCommentReplyLike = async (commentId: number) => {
 
 export const deletelLikeVideoComment = (
   commentId: number,
-  replyToCommentId: number,
   isReply: boolean
 ) => {
   const query: UseMutationOptions = {

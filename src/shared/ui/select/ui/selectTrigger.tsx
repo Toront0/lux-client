@@ -1,6 +1,6 @@
 import { useSelectContext } from "../config/context";
 
-const SelectTrigger = ({ defaultValue }: { defaultValue: string }) => {
+const SelectTrigger = ({ children }: { children: string }) => {
   const { setIsOpen, chosenOption, chosenValue } = useSelectContext();
 
   return (
@@ -9,7 +9,7 @@ const SelectTrigger = ({ defaultValue }: { defaultValue: string }) => {
       onClick={() => setIsOpen((p) => !p)}
       className="text-sm text-gray-4 dark:text-gray-12 px-3 border border-opac-w-1 flex items-center justify-between min-w-[132px] w-full py-2 rounded bg-opac-b-1 dark:bg-opac-w-1 cursor-pointer"
     >
-      {chosenOption === -1 ? defaultValue : chosenValue}
+      {chosenOption === -1 ? children : chosenValue}
       <div className="w-6 h-6">
         <svg
           fill="#ffffff"

@@ -44,9 +44,6 @@ export const likeVideoComment = (
 ) => {
   console.log("$", [reactQueryKeys.videoCommentReplies, replyToCommentId]);
 
-  console.log("commentId", commentId);
-  console.log("replyToCommentId", replyToCommentId);
-
   const query: UseMutationOptions = {
     mutationFn: () =>
       isReply
