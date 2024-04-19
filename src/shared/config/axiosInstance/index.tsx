@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const config: AxiosRequestConfig = {
-  // baseURL: `https://${import.meta.env.VITE_BACKEND_ORIGIN}`
-  baseURL: `http://localhost:3000`
+  baseURL: `https://${import.meta.env.VITE_BACKEND_ORIGIN}`
+  // baseURL: `http://localhost:3000`
 };
 
 axios.interceptors.response.use(undefined, (e) => {
